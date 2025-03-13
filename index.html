@@ -18,11 +18,9 @@
       const calendarEl = document.getElementById('calendar');
       const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        //Public token
-        googleCalendarApiKey: 'AIzaSyDxOZdY8jDsQcbkRkBb225_-tRdGqAfO7Q',
-        events: {
-          googleCalendarId: 'b5dc2ec9671f0f377b2573e46e0eb042bb4b38dcec6d0fa6f31fd9b397c0d991@group.calendar.google.com'
-        },
+
+        events: 'https://calendar.bullseye-defenses.workers.dev/events',
+        
         //Pull events on click
         eventClick: function (info) {
           info.jsEvent.preventDefault();
@@ -98,7 +96,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("https://raw.githubusercontent.com/julianDrums/calendar-324893/refs/heads/main/nire_minimal_grid_background.jpg");
+    background-image: url("/home/julian/Downloads/nire_minimal_grid_background.jpg");
     background-size: cover;
     background-position: 50% 58%;
     opacity: 1;
