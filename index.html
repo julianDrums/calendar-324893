@@ -30,7 +30,7 @@
             ? info.event.extendedProps.description
             : 'No description provided';
   
-          // 🧽 Clean HTML safely
+          // 
           const tmp = document.createElement("div");
           tmp.innerHTML = rawDesc
             .replace(/<\/p>/gi, '<br><br>')
@@ -112,11 +112,15 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url("https://raw.githubusercontent.com/julianDrums/calendar-324893/refs/heads/main/nire_minimal_grid_background.jpg");
+      background-image: url("/home/julian/Downloads/nire_minimal_grid_background.jpg");
       background-size: cover;
       background-position: 50% 58%;
       opacity: 1;
       z-index: -1;
+    }
+    
+    .emoji {
+      font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
     }
 
     #calendar {
@@ -223,7 +227,8 @@
 <body>
   <div class="bg-image"></div>
 
-  <h1 class="calendar-heading">📢 Jake Moodie's Gig Events 📢</h1>
+  <h1 class="calendar-heading">
+    <span class="emoji">📢</span> Jake Moodie's Gig Events <span class="emoji">📢</span>
   <h1 class="top-link-heading">
     <a href="https://jakemoodiemusic.com">Take me back!</a>
   </h1>
