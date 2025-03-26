@@ -62,180 +62,166 @@
     });
   </script>
 
-  <style>
-    :root {
-      --fc-border-color: rgb(255, 255, 255);
-      --fc-daygrid-event-dot-width: 5px;
-      font-family: "Roboto", sans-serif;
-    }
+<style>
+  :root {
+    --fc-border-color: rgb(255, 255, 255);
+    --fc-daygrid-event-dot-width: 5px;
+    font-family: "Roboto", sans-serif;
+  }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      overflow-x: hidden;
-      font-family: "Roboto", sans-serif;
-    }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* prevent scrolling */
+    font-family: "Roboto", sans-serif;
+  }
 
+  .calendar-heading {
+    text-align: center;
+    font-size: 2.5em;
+    color: #5c5c5c;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin: 0;
+    padding-top: 20px;
+  }
+
+  .top-link-heading {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 900;
+  }
+
+  .top-link-heading a {
+    color: #6a0dad;
+    text-decoration: none;
+  }
+
+  .top-link-heading a:hover {
+    color: #4e89c9;
+    text-decoration: underline;
+  }
+
+  .bg-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/home/julian/Downloads/nire_minimal_grid_background.jpg");
+    background-size: cover;
+    background-position: 50% 58%;
+    opacity: 1;
+    z-index: -1;
+  }
+
+  .emoji {
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  }
+
+  #calendar {
+    height: calc(100vh - 80px); /* Adjust based on heading height */
+    margin: 0;
+    padding: 0 10px;
+  }
+
+  .fc-view-harness {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .fc-toolbar-title {
+    color: #5c5c5c;
+    font-size: 1.8em;
+    font-weight: bold;
+  }
+
+  .fc-col-header-cell {
+    background-color: #4e89c9;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .fc-daygrid-day {
+    padding: 6px;
+  }
+
+  .fc-daygrid-day-frame {
+    background-color: #7DD3FC;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100%;
+    transition: background-color 0.3s ease;
+  }
+
+  .fc-daygrid-day:hover .fc-daygrid-day-frame {
+    background-color: #38c0ff;
+  }
+
+  .fc-day-today .fc-daygrid-day-frame {
+    background-color: #6fa8dc !important;
+    border-radius: 12px;
+  }
+
+  .fc-daygrid-day-number {
+    color: #686868;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .fc-daygrid-day:hover .fc-daygrid-day-number {
+    color: black;
+  }
+
+  .fc-event {
+    background-color: #565656;
+    border-radius: 6px;
+  }
+
+  .fc-event-title {
+    font-size: 15px;
+    font-weight: bold;
+    padding: 2px 4px;
+  }
+
+  @media (max-width: 768px) {
     .calendar-heading {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 2.5em;
-      color: #5c5c5c;
-      font-weight: 900;
-      letter-spacing: 1px;
+      font-size: 1.8em;
+      padding-top: 10px;
     }
 
     .top-link-heading {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      margin: 0;
-      font-size: 1.5em;
-      font-weight: 900;
-    }
-
-    .top-link-heading a {
-      color: #6a0dad;
-      text-decoration: none;
-    }
-
-    .top-link-heading a:hover {
-      color: #4e89c9;
-      text-decoration: underline;
-    }
-
-    .bg-image {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("https://raw.githubusercontent.com/julianDrums/calendar-324893/refs/heads/main/nire_minimal_grid_background.jpg");
-      background-size: cover;
-      background-position: 50% 58%;
-      opacity: 1;
-      z-index: -1;
-    }
-    
-    .emoji {
-      font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+      font-size: 1.2em;
+      top: 10px;
+      right: 15px;
     }
 
     #calendar {
-      height: calc(100vh - 80px);
-      margin-top: 20px;
-      margin-bottom: 20px;
-      padding-left: 10px;
-      padding-right: 10px;
+      height: calc(100vh - 60px);
     }
 
-    .fc-view-harness {
-      border-radius: 16px;
-      overflow: hidden;
+    .fc {
+      font-size: 0.9rem;
     }
-
-    .fc-toolbar-title {
-      color: #5c5c5c;
-      font-size: 1.8em;
-      font-weight: bold;
-    }
-
-    .fc-col-header-cell {
-      background-color: #4e89c9;
-      color: #fff;
-      font-weight: bold;
-    }
-
-    .fc-daygrid-day {
-      position: relative;
-      padding: 6px;
-    }
-
-    .fc-daygrid-day-frame {
-      background-color: #7DD3FC;
-      border-radius: 8px;
-      overflow: hidden;
-      height: 100%;
-      transition: background-color 0.3s ease;
-    }
-
-    .fc-daygrid-day:hover .fc-daygrid-day-frame {
-      background-color: #38c0ff;
-    }
-
-    .fc-day-today {
-      position: relative;
-      z-index: 5;
-    }
-
-    .fc-day-today .fc-daygrid-day-frame {
-      background-color: #6fa8dc !important;
-      border-radius: 12px;
-      outline-offset: -2px;
-    }
-
-    .fc-daygrid-day-number {
-      color: #686868;
-      font-weight: bold;
-      font-size: 14px;
-      position: relative;
-      z-index: 3;
-    }
-
-    .fc-daygrid-day:hover .fc-daygrid-day-number {
-      color: black;
-    }
-
-    .fc-event {
-      background-color: #565656;
-      border-radius: 6px;
-    }
-
-    .fc-event-title {
-      font-size: 15px;
-      font-weight: bold;
-      padding: 2px 4px;
-    }
-
-    @media (max-width: 768px) {
-      .calendar-heading {
-        font-size: 1.8em;
-        margin-top: 10px;
-      }
-
-      .top-link-heading {
-        font-size: 1.2em;
-        top: 10px;
-        right: 15px;
-      }
-
-      #calendar {
-        height: calc(100vh - 60px);
-        margin: 0;
-        padding: 0;
-      }
-
-      .fc {
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
-
 <body>
-  <div class="bg-image"></div>
+<div class="bg-image"></div>
 
-  <h1 class="calendar-heading">
-    <span>
-      Jake Mooodie's Gig Events
-    </span>
-  <h1 class="top-link-heading">
-  </h1>
+<h1 class="calendar-heading">
+  Jake Moodie's Gig Events
+</h1>
+<h1 class="top-link-heading">
+  <!-- Optional Link -->
+</h1>
 
-  
-
-  <div id="calendar"></div>
+<div id="calendar"></div>
 </body>
 </html>
+
