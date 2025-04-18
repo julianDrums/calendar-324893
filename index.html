@@ -39,16 +39,6 @@
   
           let htmlContent = `<div style="text-align:left;white-space:pre-wrap;">${cleanDesc}</div>`;
   
-          if (imageUrl) {
-            htmlContent += `
-              <div style="margin-top:15px;text-align:center;">
-                <a href="${imageUrl}" target="_blank" rel="noopener noreferrer">
-                  View Attached Image
-                </a>
-              </div>
-            `;
-          }
-  
           Swal.fire({
             title: title,
             html: htmlContent,
